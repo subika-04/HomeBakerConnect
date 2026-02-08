@@ -1,76 +1,163 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* =========================
+   PAGE WRAPPER
+========================= */
 .delivery-register-page {
   min-height: 100vh;
-  background: linear-gradient(to right, #fff1eb, #ace0f9);
+  background: linear-gradient(135deg, #fff1eb, #ace0f9);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 40px 20px;
 }
 
+/* =========================
+   FORM CONTAINER
+========================= */
 .delivery-register-form {
-  background: white;
-  padding: 30px 40px;
-  border-radius: 12px;
-  width: 600px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  background: #ffffff;
+  width: 100%;
+  max-width: 620px;
+  padding: 35px 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
 }
 
+/* =========================
+   HEADINGS
+========================= */
 .delivery-register-form h2 {
   text-align: center;
-  margin-bottom: 20px;
-  color: #444;
+  margin-bottom: 25px;
+  color: #333;
+  font-size: 22px;
 }
 
 .delivery-register-form h4 {
-  margin-top: 25px;
-  margin-bottom: 10px;
+  margin: 30px 0 12px;
   color: #666;
+  font-size: 16px;
+  border-bottom: 2px solid #ffd1c4;
+  padding-bottom: 6px;
 }
 
+/* =========================
+   GRID LAYOUT
+========================= */
 .form-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 20px;
 }
 
-.full-width {
+.form-grid .full-width {
   grid-column: span 2;
 }
 
+/* =========================
+   LABELS
+========================= */
 .delivery-register-form label {
   font-size: 14px;
   font-weight: 500;
   color: #555;
+  display: block;
+  margin-bottom: 6px;
 }
 
+/* =========================
+   INPUT FIELDS
+========================= */
 .delivery-register-form input {
   width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 6px;
+  padding: 11px 12px;
+  border-radius: 8px;
   border: 1px solid #ccc;
-  transition: 0.3s;
+  font-size: 14px;
+  transition: all 0.25s ease;
 }
 
 .delivery-register-form input:focus {
   border-color: #ff7e5f;
   outline: none;
-  box-shadow: 0 0 4px rgba(255,126,95,0.4);
+  box-shadow: 0 0 0 2px rgba(255, 126, 95, 0.25);
 }
 
+/* =========================
+   SUBMIT BUTTON
+========================= */
 .register-btn {
-  margin-top: 25px;
+  margin-top: 30px;
   width: 100%;
   padding: 12px;
-  background: #ff7e5f;
+  background: linear-gradient(135deg, #ff7e5f, #ff5a3c);
   border: none;
   color: white;
   font-size: 16px;
-  border-radius: 8px;
+  font-weight: 600;
+  border-radius: 12px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .register-btn:hover {
-  background: #ff5a3c;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(255, 90, 60, 0.35);
+}
+
+/* =========================
+   TABLET VIEW
+========================= */
+@media (max-width: 900px) {
+  .delivery-register-form {
+    padding: 30px 28px;
+  }
+}
+
+/* =========================
+   MOBILE VIEW
+========================= */
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid .full-width {
+    grid-column: span 1;
+  }
+
+  .delivery-register-form {
+    padding: 25px 20px;
+  }
+
+  .delivery-register-form h2 {
+    font-size: 20px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+@media (max-width: 480px) {
+  .delivery-register-page {
+    padding: 20px 12px;
+  }
+
+  .delivery-register-form input {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .register-btn {
+    font-size: 15px;
+  }
 }

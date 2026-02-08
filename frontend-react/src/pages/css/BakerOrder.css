@@ -1,3 +1,4 @@
+/* ===== PAGE BASE ===== */
 .baker-orders-page {
   padding: 30px;
   background: #fffaf6;
@@ -7,25 +8,42 @@
 .baker-orders-page h2 {
   margin-bottom: 20px;
   color: #d35400;
+  text-align: center;
 }
 
-/* Order Card */
+/* ===== NO ORDERS ===== */
+.no-orders {
+  text-align: center;
+  margin-top: 80px;
+  color: #777;
+}
+
+.no-orders h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+/* ===== ORDER CARD ===== */
 .baker-order-card {
-  background: #fff;
-  border-radius: 14px;
+  background: #ffffff;
+  border-radius: 16px;
   padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 20px;
 }
 
-/* Items List */
+/* ===== ITEMS LIST ===== */
 .order-items {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
-/* Single Item */
+/* ===== SINGLE ITEM ===== */
 .order-item {
   display: flex;
   align-items: center;
@@ -49,25 +67,23 @@
   color: #666;
 }
 
-/* ⭐ Order Summary */
+/* ===== ORDER SUMMARY ===== */
 .order-summary {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 15px;
+  gap: 10px;
   font-weight: 500;
 }
 
-/* Delivery Code */
 .delivery-code {
-  color: #555;
   font-size: 14px;
+  color: #555;
 }
 
-/* ⭐ Delivered Status Indicator */
+/* ===== STATUS BADGE ===== */
 .delivered-btn {
   width: fit-content;
-  margin-top: 8px;
+  margin-top: 6px;
   background: #ccc;
   color: white;
   border: none;
@@ -75,17 +91,16 @@
   border-radius: 6px;
   font-weight: 500;
   cursor: not-allowed;
-  transition: 0.3s;
 }
 
-/* When Delivered */
 .delivered-btn.active {
   background: #28a745;
   box-shadow: 0 0 8px rgba(40, 167, 69, 0.6);
 }
 
-/* ⭐ Status Buttons */
+/* ===== STATUS ACTIONS ===== */
 .status-actions {
+  grid-column: 1 / -1;
   display: flex;
   gap: 10px;
   margin-top: 15px;
@@ -107,7 +122,7 @@
   color: white;
 }
 
-/* Manual Delivered Override */
+/* ===== MANUAL DELIVERED ===== */
 .manual-delivered {
   background: #2ecc71;
   color: white;
@@ -117,48 +132,86 @@
   background: #27ae60;
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-  .order-summary {
-    flex-direction: column;
-    gap: 6px;
-  }
-}
-.no-orders {
-  text-align: center;
-  margin-top: 80px;
-  color: #777;
+/* ===== TRACK BUTTON ===== */
+.track-btn {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-.no-orders h3 {
-  font-size: 22px;
-  margin-bottom: 8px;
+.track-btn:hover {
+  background: #0056b3;
 }
+
+/* ===== MODAL ===== */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0,0,0,0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .modal-content {
   background: white;
   padding: 20px;
-  border-radius: 8px;
-  width: 80%;
-  max-width: 600px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 650px;
 }
 
-.track-btn {
-  background: #007bff;
-  color: white;
+.modal-content h4 {
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.modal-content button {
+  margin-top: 12px;
+  padding: 8px 16px;
   border: none;
-  padding: 10px;
+  border-radius: 8px;
+  background: #e17055;
+  color: white;
   cursor: pointer;
-  margin-top: 20px;
+}
+
+/* ===================== */
+/* ===== MOBILE VIEW ==== */
+/* ===================== */
+@media (max-width: 768px) {
+
+  .baker-orders-page {
+    padding: 16px;
+  }
+
+  .baker-order-card {
+    grid-template-columns: 1fr;
+  }
+
+  .order-item img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .status-actions {
+    justify-content: center;
+  }
+
+  .track-btn {
+    width: 100%;
+  }
+
+  .modal-content {
+    padding: 16px;
+  }
 }

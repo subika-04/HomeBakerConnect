@@ -1,4 +1,4 @@
-/* Page background */
+/* ===== PAGE BACKGROUND ===== */
 .product-form-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #fff6f0, #fde9dc);
@@ -6,83 +6,97 @@
   justify-content: center;
   align-items: center;
   padding: 40px 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Form card */
+/* ===== FORM CARD ===== */
 .product-form {
-  background: white;
+  background: #ffffff;
   width: 100%;
   max-width: 650px;
   padding: 30px 35px;
   border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Section headings */
+/* ===== SECTION HEADINGS ===== */
 .product-form h4 {
-  margin: 24px 0 14px;
+  margin: 26px 0 14px;
   font-size: 18px;
   color: #d35400;
   border-bottom: 2px solid #f4c5a1;
   padding-bottom: 6px;
 }
 
-/* Labels */
+/* ===== LABELS ===== */
 .product-form label {
   display: block;
-  margin: 10px 0 6px;
+  margin: 12px 0 6px;
   font-weight: 500;
   color: #444;
 }
 
-/* Inputs & selects */
+/* ===== INPUTS & SELECTS ===== */
 .product-form input,
 .product-form select {
   width: 100%;
-  padding: 10px 12px;
+  padding: 11px 12px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 14px;
   outline: none;
-  transition: 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .product-form input:focus,
 .product-form select:focus {
   border-color: #e17055;
-  box-shadow: 0 0 0 2px rgba(225,112,85,0.15);
+  box-shadow: 0 0 0 2px rgba(225, 112, 85, 0.18);
 }
 
-/* File input */
+/* ===== FILE INPUT ===== */
 .product-form input[type="file"] {
   padding: 8px;
   background: #fafafa;
   cursor: pointer;
 }
 
-/* Submit button */
+/* ===== SUBMIT BUTTON ===== */
 .product-form button {
   width: 100%;
-  margin-top: 28px;
-  padding: 13px;
+  margin-top: 30px;
+  padding: 14px;
   border: none;
   border-radius: 12px;
   background: linear-gradient(135deg, #e17055, #d35400);
-  color: white;
+  color: #ffffff;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .product-form button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(211,84,0,0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(211, 84, 0, 0.35);
 }
 
-/* Mobile */
+.product-form button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(211, 84, 0, 0.25);
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 600px) {
   .product-form {
     padding: 25px 20px;
+  }
+
+  .product-form h4 {
+    font-size: 17px;
+  }
+
+  .product-form button {
+    font-size: 15px;
   }
 }

@@ -1,4 +1,4 @@
-/* ===== CART PAGE ===== */
+/* ===== PAGE BASE ===== */
 .cartPage {
   padding: 30px;
   max-width: 1100px;
@@ -7,26 +7,10 @@
   min-height: 100vh;
 }
 
-/* ===== ACTION BUTTONS ===== */
-.cartActions {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 25px;
-}
-
-.cartActions button {
-  background: #ff8c42;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.cartActions button:hover {
-  background: #e6762e;
+/* ===== TITLE ===== */
+.cartPage h2 {
+  margin-bottom: 20px;
+  color: #333;
 }
 
 /* ===== HEADER ROW ===== */
@@ -34,11 +18,11 @@
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
   padding: 14px 18px;
-  background: #fff;
+  background: #ffffff;
   border-radius: 10px;
   font-weight: 600;
   box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 /* ===== CART ROW ===== */
@@ -51,7 +35,7 @@
   border-radius: 10px;
   margin-bottom: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
 }
 
 .cartRow:hover {
@@ -74,11 +58,35 @@
   color: #777;
 }
 
-/* ===== FOOTER ===== */
-.cartFooter {
+/* ===== ACTION BUTTONS ===== */
+.cartActions {
+  display: flex;
+  justify-content: space-between;
   margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.cartActions button {
+  background: #ff8c42;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cartActions button:hover {
+  background: #e6762e;
+}
+
+/* ===== FOOTER TOTAL ===== */
+.cartFooter {
+  margin-top: 20px;
+  margin-bottom: 30px;
   padding: 20px;
-  background: #fff;
+  background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   display: flex;
@@ -94,9 +102,9 @@
 /* ===== PLACE ORDER BUTTON ===== */
 .cartFooter button {
   background: #28a745;
-  color: white;
+  color: #ffffff;
   border: none;
-  padding: 12px 24px;
+  padding: 12px 26px;
   border-radius: 25px;
   font-size: 15px;
   cursor: pointer;
@@ -105,6 +113,45 @@
 
 .cartFooter button:hover {
   background: #218838;
+}
+
+/* ⭐ ===== BAKERY FOOTER ===== */
+.bakeryFooter {
+  margin-top: 40px;
+  padding: 25px;
+  background: #fff7f0;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.bakeryFooter h3 {
+  margin-bottom: 8px;
+  color: #ff8c42;
+}
+
+.bakeryFooter p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.bakeryFooter a {
+  text-decoration: none;
+  color: #000;
+}
+
+.bakeryFooter button {
+  margin-top: 12px;
+  padding: 10px 20px;
+  border: none;
+  background: #ff8c42;
+  color: #ffffff;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.bakeryFooter button:hover {
+  background: #ff7420;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -126,100 +173,11 @@
   .cartFooter {
     flex-direction: column;
     gap: 15px;
+    text-align: center;
   }
 
   .cartActions {
     flex-direction: column;
     gap: 12px;
   }
-}
-/* ===== PAGE ===== */
-.cartPage {
-  padding: 30px;
-}
-
-/* ===== HEADER ===== */
-.cartHeader {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-/* ===== ROW ===== */
-.cartRow {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  align-items: center;
-  margin: 10px 0;
-}
-
-.cartRow img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-}
-
-/* ===== FOOTER TOTAL ===== */
-.cartFooter {
-  background: #fff;
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
-/* ===== ACTION BUTTONS ===== */
-.cartActions {
-  margin-top: 20px;
-  display: flex;
-  gap: 15px;
-}
-
-.cartActions button {
-  padding: 10px 15px;
-  border: none;
-  background: #6b4eff;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-/* ===== EMPTY CART ===== */
-.emptyCart {
-  margin: 20px 0;
-  font-weight: 500;
-}
-
-/* ⭐ BAKERY FOOTER */
-.bakeryFooter {
-  margin-top: 40px;
-  padding: 20px;
-  background: #fff7f0;
-  border-radius: 12px;
-  text-align: center;
-}
-
-.bakeryFooter h3 {
-  margin-bottom: 10px;
-  color: #ff8c42;
-}
-
-.bakeryFooter button {
-  margin-top: 10px;
-  padding: 10px 18px;
-  border: none;
-  background: #ff8c42;
-  color: white;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.bakeryFooter button:hover {
-  background: #ff7420;
-}
-.bakeryFooter a{
-  text-decoration: none;
-  color: black;
 }

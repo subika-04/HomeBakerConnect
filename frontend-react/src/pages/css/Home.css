@@ -1,104 +1,178 @@
-/* ===== PAGE BASE ===== */
-body {
-  background: #fafafa;
+/* =========================
+   GLOBAL BASE
+========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
 }
 
-/* ===== HEADER ===== */
+body {
+  background: #fafafa;
+  color: #333;
+}
+
+/* =========================
+   HEADER
+========================= */
 .homeHeader {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 16px 24px;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 24px;
   background: #ffffff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
-.homeHeader input {
-  border: 1px solid #ddd;
-  border-radius: 8px;
+/* LOGO */
+.logoSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoSection img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.logoSection h3 {
+  font-size: 18px;
+  color: #6b4eff;
+}
+
+/* SEARCH */
+.searchSection {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.searchSection input {
+  width: 100%;
+  max-width: 380px;
+  padding: 10px 16px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
   outline: none;
 }
 
-.homeHeader button {
-  background: #ff8c42;
+/* NAV BUTTONS */
+.navButtons {
+  display: flex;
+  gap: 12px;
+}
+
+.cartButton,
+.orderButton {
+  padding: 8px 16px;
+  border-radius: 20px;
   border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
+  background: #6b4eff;
+  color: #fff;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
-.homeHeader button a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
+.cartButton:hover,
+.orderButton:hover {
+  background: #5337e6;
 }
 
-/* ===== BAKERY TITLE ===== */
+/* =========================
+   BAKERY TITLE
+========================= */
 h1 {
-  margin: 30px 24px 10px;
+  margin: 28px 24px 12px;
   font-size: 22px;
   color: #333;
 }
 
-/* ===== PRODUCT GRID ===== */
+/* =========================
+   PRODUCT ROW
+========================= */
 .userPageProduct {
   display: flex;
-  gap: 20px;
-  padding: 0 24px 24px;
-
-  flex-wrap: nowrap;        /* ❗ stop wrapping */
-  overflow-x: auto;         /* ❗ enable horizontal scroll */
+  gap: 18px;
+  padding: 0 24px 26px;
+  overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
 }
 
+/* Scrollbar */
+.userPageProduct::-webkit-scrollbar {
+  height: 6px;
+}
 
-/* ===== PRODUCT CARD ===== */
+.userPageProduct::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 10px;
+}
+
+/* =========================
+   PRODUCT CARD
+========================= */
 .userProduct {
-  position: relative;
+  flex: 0 0 auto;
   width: 220px;
   background: #fff;
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 14px;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .userProduct:hover {
   transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
 }
 
 .userProduct h4 {
   margin: 6px 0;
   font-size: 16px;
-  color: #222;
 }
 
 .userProduct p {
-  margin: 4px 0 8px;
+  margin-bottom: 8px;
   font-weight: 600;
   color: #ff8c42;
 }
 
-/* ===== PRODUCT IMAGE ===== */
+/* IMAGE */
 .userProduct img {
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  height: 180px;
   object-fit: cover;
   border-radius: 12px;
 }
 
-/* ===== QUANTITY CONTROL ===== */
+/* =========================
+   ADD TO CART / QUANTITY
+========================= */
+.userProduct > button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: #ff8c42;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
 .qtyControl {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   margin-top: 10px;
 }
 
@@ -118,123 +192,101 @@ h1 {
   font-weight: 600;
 }
 
-/* ===== ADD TO CART BUTTON ===== */
-.userProduct > button {
-  margin-top: 10px;
-  padding: 8px 14px;
-  background: #ff8c42;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-/* ===== OVERLAY ===== */
+/* =========================
+   OVERLAY (DESKTOP)
+========================= */
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0, 0, 0, 0.55);
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
-  border-radius: 14px;
-  transition: opacity 0.3s ease;
+  border-radius: 16px;
+  transition: opacity 0.25s ease;
 }
 
 .userProduct:hover .overlay {
   opacity: 1;
 }
 
-/* Overlay buttons */
 .overlay button {
   background: #ff8c42;
   border: none;
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: 20px;
   color: white;
-  font-size: 14px;
 }
 
-/* ===== RESPONSIVE ===== */
+/* =========================
+   MOBILE & TABLET
+========================= */
 @media (max-width: 768px) {
-  .userPageProduct {
-    justify-content: center;
-  }
-
   .homeHeader {
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .logoSection {
+    justify-content: center;
+  }
+
+  .searchSection {
+    justify-content: center;
+  }
+
+  .navButtons {
+    justify-content: center;
+  }
+
+  .cartButton,
+  .orderButton {
+    flex: 1;
+    max-width: 160px;
+  }
+
+  h1 {
+    margin-left: 16px;
+    font-size: 20px;
+  }
+
+  .userPageProduct {
+    padding: 0 16px 22px;
   }
 }
-.homeHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 30px;
-    background: white;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
 
-/* LEFT LOGO */
-.logoSection {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logoSection img {
-    width: 45px;
-    height: 45px;
-    object-fit: contain;
-}
-
-.logoSection h3 {
-    color: #6b4eff;
-}
-
-/* CENTER SEARCH */
-.searchSection {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.searchSection input {
-    width: 350px;
+/* =========================
+   SMALL MOBILE
+========================= */
+@media (max-width: 480px) {
+  .userProduct {
+    width: 170px;
     padding: 10px;
-    border-radius: 25px;
-    border: 1px solid #ccc;
+  }
+
+  .userProduct img {
+    height: 140px;
+  }
+
+  .userProduct h4 {
+    font-size: 14px;
+  }
+
+  .userProduct p {
+    font-size: 14px;
+  }
 }
 
-/* RIGHT BUTTONS */
-.navButtons {
-    display: flex;
-    gap: 15px;
-}
-
-.cartButton,
-.orderButton {
-    padding: 8px 15px;
-    border-radius: 20px;
-    border: none;
-    background: #6b4eff;
-    color: white;
-    cursor: pointer;
-}
-
-.cartButton:hover,
-.orderButton:hover {
-    background: #5337e6;
-}
-.userProduct {
-  flex: 0 0 auto;   /* ❗ keeps cards in one row */
-  width: 220px;
-}
-.userPageProduct::-webkit-scrollbar {
-  height: 6px;
-}
-
-.userPageProduct::-webkit-scrollbar-thumb {
-  background: #ffffff;
-  border-radius: 10px;
+/* =========================
+   TOUCH DEVICES (NO HOVER)
+========================= */
+@media (hover: none) {
+  .overlay {
+    position: static;
+    opacity: 1;
+    background: transparent;
+    margin-top: 8px;
+  }
 }
