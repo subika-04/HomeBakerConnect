@@ -9,7 +9,7 @@ const TrackOrderModal = ({ orderId, onClose }) => {
   useEffect(() => {
     const fetchLocation = async () => {
       const res = await axios.get(
-        `http://localhost:9000/delivery/track/${orderId}`,
+        `https://homebakerconnect.onrender.com/delivery/track/${orderId}`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }

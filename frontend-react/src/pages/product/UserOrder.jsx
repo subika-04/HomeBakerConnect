@@ -14,7 +14,7 @@ const UserOrder = () => {
     const fetchOrders = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:9000/product/getUserOrder",
+          "https://homebakerconnect.onrender.com/product/getUserOrder",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -43,7 +43,7 @@ const UserOrder = () => {
   // New: Fetch location
   const fetchLocation = async (orderId) => {
     try {
-      const res = await axios.get(`http://localhost:9000/delivery/getLocation/${orderId}`, {
+      const res = await axios.get(`https://homebakerconnect.onrender.com/delivery/getLocation/${orderId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setPartnerLocation(res.data.location);

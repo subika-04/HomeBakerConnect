@@ -13,7 +13,7 @@ const BakerDashBoard = () => {
   const token = localStorage.getItem("token");
   useEffect(()=>{
     if (!token) return;
-  axios.get("http://localhost:9000/product/getBakerProducts",{
+  axios.get("https://homebakerconnect.onrender.com/product/getBakerProducts",{
      headers: {
     Authorization: `Bearer ${token}`,
   }}

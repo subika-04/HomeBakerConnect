@@ -31,7 +31,7 @@ const handleSubmit=async(e)=>{
     e.preventDefault()
     try
     {
-      const res=await axios.post("http://localhost:9000/auth/userRegister",form)
+      const res=await axios.post("https://homebakerconnect.onrender.com/auth/userRegister",form)
       alert(res.data.message)
       navigate("/login")
       alert("Enter your Username and Password")

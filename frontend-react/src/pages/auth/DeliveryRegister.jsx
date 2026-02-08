@@ -27,7 +27,7 @@ const DeliveryRegister = ()=>{
 
   try{
     const res = await axios.post(
-      "http://localhost:9000/auth/deliveryRegister",
+      "https://homebakerconnect.onrender.com/auth/deliveryRegister",
       form
     )
 

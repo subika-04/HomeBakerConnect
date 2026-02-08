@@ -33,7 +33,7 @@ const handleSubmit = async (e) => {
 
     const token = localStorage.getItem("token");
     const res = await axios.post(
-      "http://localhost:9000/product/addProduct",
+      "https://homebakerconnect.onrender.com/product/addProduct",
       formData,
       {
         headers: {

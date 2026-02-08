@@ -15,7 +15,7 @@ const Home = () => {
   // Fetch products
   useEffect(() => {
     axios
-      .get("http://localhost:9000/product/getAllProductsForCustomer", {
+      .get("https://homebakerconnect.onrender.com/product/getAllProductsForCustomer", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -32,7 +32,7 @@ const BakerRegister = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:9000/auth/bakerRegister",
+        "https://homebakerconnect.onrender.com/auth/bakerRegister",
         form
       );
       alert(res.data.message);

@@ -18,7 +18,7 @@ const DeliveryDashboard = () => {
   const fetchOrders = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:9000/delivery/partnerOrders",
+        "https://homebakerconnect.onrender.com/delivery/partnerOrders",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -43,7 +43,7 @@ const DeliveryDashboard = () => {
     try {
       // Step 1 → Verify delivery code
       await axios.put(
-        "http://localhost:9000/delivery/confirmDelivery",
+        "https://homebakerconnect.onrender.com/delivery/confirmDelivery",
         {
           orderId,
           deliveryCode: codes[orderId],
@@ -67,7 +67,7 @@ const DeliveryDashboard = () => {
   const markDelivered = async (orderId) => {
     try {
       await axios.put(
-        `http://localhost:9000/delivery/markDelivered/${orderId}`,
+        `https://homebakerconnect.onrender.com/delivery/markDelivered/${orderId}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -88,7 +88,7 @@ const DeliveryDashboard = () => {
             const { latitude, longitude } = position.coords;
             try {
               await axios.put(
-                "http://localhost:9000/delivery/updateLocation",
+                "https://homebakerconnect.onrender.com/delivery/updateLocation",
                 { lat: latitude, lng: longitude },
                 { headers: { Authorization: `Bearer ${token}` } }
               );

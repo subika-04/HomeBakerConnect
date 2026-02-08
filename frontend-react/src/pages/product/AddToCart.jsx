@@ -21,7 +21,7 @@ const AddToCart = () => {
     if (!bakerId) return;
 
     axios
-      .get(`http://localhost:9000/product/getBakeryDetails/${bakerId}`,{
+      .get(`https://homebakerconnect.onrender.com/product/getBakeryDetails/${bakerId}`,{
           headers: { Authorization: `Bearer ${token}` },
         })
       .then((res) => {
@@ -44,7 +44,7 @@ const AddToCart = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:9000/product/placeOrder",
+        "https://homebakerconnect.onrender.com/product/placeOrder",
         { cart: cartItems },
         {
           headers: { Authorization: `Bearer ${token}` },
