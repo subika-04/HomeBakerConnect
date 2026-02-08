@@ -1,0 +1,86 @@
+/* Page wrapper */
+.userRegister {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f6f8;
+  background-image: url('../../assets/download.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Form container */
+.userRegister form {
+  width: 700px;
+  padding: 30px 35px;
+  background: #ffffff;
+  border: 1px solid #dcdcdc;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  column-gap: 20px;
+  row-gap: 14px;
+}
+
+/* Section headings */
+.userRegister h4 {
+  grid-column: 1 / -1;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 1px solid #ac5221;
+  padding-bottom: 6px;
+  margin-top: 10px;
+}
+
+/* Labels */
+.userRegister label {
+  font-size: 14px;
+  color: #444;
+  align-self: center;
+}
+
+/* Inputs */
+.userRegister input {
+  height: 36px;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #cfcfcf;
+  outline: none;
+}
+
+.userRegister input:focus {
+  border-color: #ff7a18;
+  background-color: #fff9f5;
+}
+
+/* Submit button */
+.userRegister button {
+  grid-column: 1 / -1;
+  margin-top: 20px;
+  height: 40px;
+  background: #ff7a18;
+  color: #ffffff;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.userRegister button:hover {
+  background: #e86c12;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .userRegister form {
+    width: 90%;
+    grid-template-columns: 1fr;
+  }
+
+  .userRegister label {
+    margin-top: 6px;
+  }
+}

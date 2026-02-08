@@ -1,0 +1,109 @@
+/* Page */
+.baker-dashboard {
+  min-height: 100vh;
+  padding: 30px 40px;
+  background: #ffffff;
+}
+
+/* Bakery name */
+.bakery-title {
+  font-size: 35px;
+  color: #d35400;
+  text-align: center;
+  /* margin-bottom: 5px;
+  margin-left: 0; */
+}
+
+/* Section title */
+.section-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+/* Products grid */
+.bakerProducts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* Product card */
+.bakerProduct {
+  background: white;
+  border-radius: 14px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.bakerProduct:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.12);
+}
+
+/* Product image */
+.bakerProduct img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* Product name */
+.bakerProduct h5 {
+  font-size: 16px;
+  margin: 6px 0;
+  color: #333;
+}
+
+/* Price */
+.bakerProduct p {
+  font-weight: 600;
+  color: #e17055;
+}
+
+/* Action buttons */
+.dashboard-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Buttons */
+.dash-btn {
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.dash-btn.primary {
+  background: linear-gradient(135deg, #e17055, #d35400);
+  color: white;
+}
+
+.dash-btn.secondary {
+  background: #f2f2f2;
+  color: #333;
+}
+
+.dash-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .baker-dashboard {
+    padding: 20px;
+  }
+
+  .dashboard-actions {
+    flex-direction: column;
+  }
+}

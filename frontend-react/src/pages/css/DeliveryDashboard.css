@@ -1,0 +1,65 @@
+.page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f6f9fc, #e9eff5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial;
+}
+
+.dashboardCard {
+  width: 500px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.emptyBox {
+  text-align: center;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.orderCard {
+  border: 1px solid #eee;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+.orderInfo {
+  margin-bottom: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #28a745;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #218838;
+}
