@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/Home.css";
+import logo from "../../assets/logo2.png";
+
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -120,7 +122,7 @@ const Home = () => {
       {/* HEADER */}
       <div className="homeHeader">
         <div className="logoSection">
-          <img src="/logo2.png" alt="BakeCloud" />
+          <img src={logo} alt="BakeCloud" />
           <h3>BakeCloud</h3>
         </div>
 
