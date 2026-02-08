@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "../css/Home.css";
 import logo from "../../assets/logo2.png";
 
-
 const Home = () => {
   const [data, setData] = useState([]);
   const [cart, setCart] = useState(() => {
@@ -14,7 +13,6 @@ const Home = () => {
 
   const token = localStorage.getItem("token");
 
-  // Fetch products
   useEffect(() => {
     axios
       .get(
@@ -27,38 +25,12 @@ const Home = () => {
       .catch((err) => console.log(err.message));
   }, []);
 
-  // Get quantity
   const getQuantity = (productId) => {
     const item = cart.find((c) => c._id === productId);
     return item ? item.quantity : 0;
   };
 
-  // Add to cart
   const addToCart = (product) => {
-    const storedBakerId = JSON.parse(localStorage.getItem("currentBakerId"));
-
-    if (cart.length === 0) {
-      localStorage.setItem(
-        "currentBakerId",
-        JSON.stringify(product.bakerId)
-      );
-    }
-
-    if (storedBakerId && storedBakerId !== product.bakerId) {
-      const confirmClear = window.confirm(
-        "Your cart contains items from another bakery. Clear cart and add this item?"
-      );
-      if (!confirmClear) return;
-
-      localStorage.removeItem("cart");
-      localStorage.removeItem("currentBakerId");
-      setCart([]);
-      localStorage.setItem(
-        "currentBakerId",
-        JSON.stringify(product.bakerId)
-      );
-    }
-
     setCart((prev) => {
       const existing = prev.find((p) => p._id === product._id);
       let updatedCart;
@@ -78,7 +50,6 @@ const Home = () => {
     });
   };
 
-  // Decrease quantity
   const decreaseQuantity = (productId) => {
     setCart((prev) => {
       const updatedCart = prev
@@ -87,16 +58,11 @@ const Home = () => {
         )
         .filter((p) => p.quantity > 0);
 
-      if (updatedCart.length === 0) {
-        localStorage.removeItem("currentBakerId");
-      }
-
       localStorage.setItem("cart", JSON.stringify(updatedCart));
       return updatedCart;
     });
   };
 
-  // Quantity UI
   const renderQuantityComponent = (product) => {
     const qty = getQuantity(product._id);
 
@@ -122,7 +88,7 @@ const Home = () => {
       {/* HEADER */}
       <div className="homeHeader">
         <div className="logoSection">
-          <img src={logo} alt="BakeCloud" />
+          <img src={logo} alt="BakeCloud Logo" />
           <h3>BakeCloud</h3>
         </div>
 
@@ -163,15 +129,8 @@ const Home = () => {
                   <h4>{product.productName}</h4>
                   <p>₹{product.price}</p>
 
-                  {/* MOBILE / DEFAULT */}
-                  <div className="qty-normal">
-                    {renderQuantityComponent(product)}
-                  </div>
-
-                  {/* DESKTOP OVERLAY */}
-                  <div className="overlay qty-overlay">
-                    {renderQuantityComponent(product)}
-                  </div>
+                  {/* SINGLE quantity UI */}
+                  {renderQuantityComponent(product)}
                 </div>
               ))}
           </div>
