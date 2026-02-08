@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import '../css/Home.css'
+import "../css/Home.css";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -15,11 +15,12 @@ const Home = () => {
   // Fetch products
   useEffect(() => {
     axios
-      .get("https://homebakerconnect.onrender.com/product/getAllProductsForCustomer", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .get(
+        "https://homebakerconnect.onrender.com/product/getAllProductsForCustomer",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       .then((res) => setData(res.data))
       .catch((err) => console.log(err.message));
   }, []);
@@ -30,7 +31,7 @@ const Home = () => {
     return item ? item.quantity : 0;
   };
 
-  // Add / increase quantity
+  // Add to cart
   const addToCart = (product) => {
     const storedBakerId = JSON.parse(localStorage.getItem("currentBakerId"));
 
@@ -49,11 +50,11 @@ const Home = () => {
 
       localStorage.removeItem("cart");
       localStorage.removeItem("currentBakerId");
+      setCart([]);
       localStorage.setItem(
         "currentBakerId",
         JSON.stringify(product.bakerId)
       );
-      setCart([]);
     }
 
     setCart((prev) => {
@@ -93,13 +94,13 @@ const Home = () => {
     });
   };
 
-  // Quantity UI (reused in normal + overlay)
+  // Quantity UI
   const renderQuantityComponent = (product) => {
     const qty = getQuantity(product._id);
 
     if (qty === 0) {
       return (
-        <button onClick={() => addToCart(product)}>
+        <button className="addBtn" onClick={() => addToCart(product)}>
           Add to Cart
         </button>
       );
@@ -116,41 +117,33 @@ const Home = () => {
 
   return (
     <div>
-      {/* Header */}
-      {/* Header */}
-<div className="homeHeader">
+      {/* HEADER */}
+      <div className="homeHeader">
+        <div className="logoSection">
+          <img src="/logo2.png" alt="BakeCloud" />
+          <h3>BakeCloud</h3>
+        </div>
 
-  {/* LEFT → LOGO */}
-  <div className="logoSection">
-    <img src="/logo2.png" alt="BakeCloud Logo" />
-    <h3>BakeCloud</h3>
-  </div>
+        <div className="searchSection">
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
 
-  {/* CENTER → SEARCH */}
-  <div className="searchSection">
-    <input
-      type="text"
-      placeholder="Search products..."
-      value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
-    />
-  </div>
+        <div className="navButtons">
+          <Link to="/cart">
+            <button className="cartButton">View Cart</button>
+          </Link>
+          <Link to="/userOrder">
+            <button className="orderButton">Your Orders</button>
+          </Link>
+        </div>
+      </div>
 
-  {/* RIGHT → NAV BUTTONS */}
-  <div className="navButtons">
-    <Link to="/cart">
-      <button className="cartButton">View Cart</button>
-    </Link>
-
-    <Link to="/userOrder">
-      <button className="orderButton">Your Orders</button>
-    </Link>
-  </div>
-
-</div>
-
-
-      {/* Products */}
+      {/* PRODUCTS */}
       {data.map((item) => (
         <div key={item.baker._id}>
           <h1>{item.baker.bakeryBrandName}</h1>
@@ -164,15 +157,17 @@ const Home = () => {
               )
               .map((product) => (
                 <div key={product._id} className="userProduct">
+                  <img src={product.productImage} alt="" />
                   <h4>{product.productName}</h4>
                   <p>₹{product.price}</p>
-                  <img src={product.productImage} alt="" />
 
-                  {/* Normal view */}
-                  {renderQuantityComponent(product)}
+                  {/* MOBILE / DEFAULT */}
+                  <div className="qty-normal">
+                    {renderQuantityComponent(product)}
+                  </div>
 
-                  {/* Overlay view */}
-                  <div className="overlay">
+                  {/* DESKTOP OVERLAY */}
+                  <div className="overlay qty-overlay">
                     {renderQuantityComponent(product)}
                   </div>
                 </div>
