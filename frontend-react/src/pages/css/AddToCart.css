@@ -153,31 +153,87 @@
 .bakeryFooter button:hover {
   background: #ff7420;
 }
-
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+
+  .cartPage {
+    padding: 16px;
+  }
+
+  /* Hide table header */
   .cartHeader {
     display: none;
   }
 
+  /* Card-style rows */
   .cartRow {
     grid-template-columns: 1fr;
-    gap: 10px;
-    text-align: center;
+    gap: 8px;
+    padding: 16px;
+    text-align: left;
   }
 
+  .cartRow span {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+
+  .cartRow span::before {
+    font-weight: 600;
+    color: #555;
+  }
+
+  .cartRow span:nth-child(1)::before {
+    content: "Product";
+  }
+
+  .cartRow span:nth-child(3)::before {
+    content: "Quantity";
+  }
+
+  .cartRow span:nth-child(4)::before {
+    content: "Price";
+  }
+
+  .cartRow span:nth-child(5)::before {
+    content: "Total";
+  }
+
+  /* Image */
   .cartRow img {
-    margin: auto;
+    width: 90px;
+    height: 90px;
+    margin: 10px auto;
+    display: block;
   }
 
+  /* Sticky total */
   .cartFooter {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
     flex-direction: column;
-    gap: 15px;
-    text-align: center;
+    gap: 12px;
+    padding: 16px;
   }
 
+  .cartFooter button {
+    width: 100%;
+  }
+
+  /* Action buttons */
   .cartActions {
     flex-direction: column;
     gap: 12px;
+  }
+
+  .cartActions button {
+    width: 100%;
+  }
+
+  /* Bakery footer */
+  .bakeryFooter {
+    padding: 18px;
   }
 }
