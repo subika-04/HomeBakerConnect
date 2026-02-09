@@ -9,12 +9,10 @@ const DeliveryDashboard = () => {
 
   useEffect(() => {
     fetchOrders();
-    const interval = setInterval(fetchOrders, 2000); // every 1 sec (as in your original)
-
-    return () => clearInterval(interval); // cleanup
+    const interval = setInterval(fetchOrders, 2000);
+    return () => clearInterval(interval);
   }, []);
 
-  // ⭐ Fetch Assigned Orders (from your original code)
   const fetchOrders = async () => {
     try {
       const res = await axios.get(
@@ -23,14 +21,12 @@ const DeliveryDashboard = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-
       setOrders(res.data.orders || []);
     } catch (error) {
       console.log(error);
     }
   };
 
-  // ⭐ Store delivery code per order
   const handleCodeChange = (orderId, value) => {
     setCodes((prev) => ({
       ...prev,
@@ -38,10 +34,8 @@ const DeliveryDashboard = () => {
     }));
   };
 
-  // ⭐ Confirm Delivery (Validate Code + Mark Delivered)
   const confirmDelivery = async (orderId) => {
     try {
-      // Step 1 → Verify delivery code
       await axios.put(
         "https://homebakerconnect.onrender.com/delivery/confirmDelivery",
         {
@@ -53,9 +47,6 @@ const DeliveryDashboard = () => {
         }
       );
 
-      // Step 2 → Mark Delivered (Extra tracking API)
-      await markDelivered(orderId);
-
       alert("Order Delivered ✅");
       fetchOrders();
     } catch (error) {
@@ -63,23 +54,7 @@ const DeliveryDashboard = () => {
     }
   };
 
-  // ⭐ Mark Delivered API
-  const markDelivered = async (orderId) => {
-    try {
-      await axios.put(
-        `https://homebakerconnect.onrender.com/delivery/markDelivered/${orderId}`,
-        {},
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-    } catch (error) {
-      console.log("Mark Delivered Error:", error);
-      throw error;
-    }
-  };
-
-  // Send location every 10 seconds (new addition)
+  // Send live location
   useEffect(() => {
     const sendLocation = () => {
       if (navigator.geolocation) {
@@ -102,7 +77,7 @@ const DeliveryDashboard = () => {
     };
 
     sendLocation();
-    const locationInterval = setInterval(sendLocation, 3000); // Every 10s
+    const locationInterval = setInterval(sendLocation, 3000);
     return () => clearInterval(locationInterval);
   }, [token]);
 
@@ -121,23 +96,41 @@ const DeliveryDashboard = () => {
             <div key={order._id} className="orderCard">
               <div className="orderInfo">
                 <p>
-                  <strong>Order ID :</strong> {order._id}
+                  <strong>Order ID:</strong> {order._id}
                 </p>
                 <p>
-                  <strong>Status :</strong> {order.status}
+                  <strong>Status:</strong> {order.status}
                 </p>
+
+                {/* ✅ DELIVERY ADDRESS */}
+                <div className="addressBox">
+                  <p><strong>Customer:</strong> {order.userId?.fullName}</p>
+                  <p>
+                    {order.userId?.houseFlatNo},{" "}
+                    {order.userId?.areaStreet}
+                  </p>
+                  <p>
+                    {order.userId?.city} - {order.userId?.pincode}
+                  </p>
+                  <p>
+                    <strong>Phone:</strong> {order.userId?.phoneNo}
+                  </p>
+                </div>
               </div>
 
-              {/* Code Input */}
               <input
                 className="input"
                 placeholder={`Enter customer code after receiving payment of ₹${order.totalAmount}`}
                 value={codes[order._id] || ""}
-                onChange={(e) => handleCodeChange(order._id, e.target.value)}
+                onChange={(e) =>
+                  handleCodeChange(order._id, e.target.value)
+                }
               />
 
-              {/* Confirm Button */}
-              <button className="button" onClick={() => confirmDelivery(order._id)}>
+              <button
+                className="button"
+                onClick={() => confirmDelivery(order._id)}
+              >
                 Confirm Delivery
               </button>
             </div>

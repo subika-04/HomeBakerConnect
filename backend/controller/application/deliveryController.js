@@ -74,23 +74,28 @@ exports.confirmDelivery = async (req, res) => {
 // =====================================
 // GET DELIVERY PARTNER ORDERS
 // =====================================
+const Order = require("../models/Order");
+
+// GET assigned orders for delivery partner
 exports.getPartnerOrders = async (req, res) => {
-
   try {
-
-    const partnerId = req.user.id
-
     const orders = await Order.find({
-  deliveryPartnerId: partnerId,
-  status: "Out for Delivery"
-}).sort({ createdAt: -1 })
+      deliveryPartnerId: req.user.id,
+      status: { $ne: "Delivered" },
+    })
+      .populate(
+        "userId",
+        "fullName phoneNo houseFlatNo areaStreet city pincode"
+      )
+      .sort({ createdAt: -1 });
 
-    res.json({ orders })
-
+    res.status(200).json({ orders });
   } catch (error) {
-    res.status(500).json({ message: error.message })
+    console.log(error);
+    res.status(500).json({ message: "Failed to fetch orders" });
   }
-}
+};
+
 
 
 // =====================================
