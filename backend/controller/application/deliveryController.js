@@ -85,8 +85,8 @@ exports.getPartnerOrders = async (req, res) => {
       .populate("userId", "fullName phoneNo houseFlatNo areaStreet city pincode")
       .sort({ createdAt: -1 });
 
-    // Add this for debugging
-    console.log("Fetched orders:", JSON.stringify(orders, null, 2));  // Check if userId is populated
+    console.log("Fetched orders:", JSON.stringify(orders, null, 2));
+    console.log("Sample userId:", orders[0]?.userId);  // Check if it's populated
 
     res.status(200).json({ orders });
   } catch (error) {
@@ -94,7 +94,6 @@ exports.getPartnerOrders = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch orders" });
   }
 };
-
 
 
 // =====================================

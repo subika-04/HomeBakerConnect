@@ -103,18 +103,11 @@ const DeliveryDashboard = () => {
 
                 {/* ✅ DELIVERY ADDRESS */}
                 <div className="addressBox">
-                  <p><strong>Customer:</strong> {order.userId.fullName}</p>
-                  <p>
-                    {order.userId.houseFlatNo},{" "}
-                    {order.userId.areaStreet}
-                  </p>
-                  <p>
-                    {order.userId?.city} - {order.userId?.pincode}
-                  </p>
-                  <p>
-                    <strong>Phone:</strong> {order.userId?.phoneNo}
-                  </p>
-                </div>
+  <p><strong>Customer:</strong> {order.userId?.fullName || "N/A"}</p>
+  <p>{order.userId?.houseFlatNo || "N/A"}, {order.userId?.areaStreet || "N/A"}</p>
+  <p>{order.userId?.city || "N/A"} - {order.userId?.pincode || "N/A"}</p>
+  <p><strong>Phone:</strong> {order.userId?.phoneNo || "N/A"}</p>
+</div>
               </div>
 
               <input
