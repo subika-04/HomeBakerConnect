@@ -14,18 +14,17 @@ const DeliveryDashboard = () => {
   }, []);
 
   const fetchOrders = async () => {
-    try {
-      const res = await axios.get(
-        "https://homebakerconnect.onrender.com/delivery/partnerOrders",
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      setOrders(res.data.orders || []);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  try {
+    const res = await axios.get(
+      "https://homebakerconnect.onrender.com/delivery/partnerOrders",
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    console.log("API Response:", res.data);  // Debug the full response
+    setOrders(res.data.orders || []);
+  } catch (error) {
+    console.error("Fetch error:", error.response?.data || error.message);
+  }
+};
 
   const handleCodeChange = (orderId, value) => {
     setCodes((prev) => ({
@@ -104,10 +103,10 @@ const DeliveryDashboard = () => {
 
                 {/* ✅ DELIVERY ADDRESS */}
                 <div className="addressBox">
-                  <p><strong>Customer:</strong> {order.userId?.fullName}</p>
+                  <p><strong>Customer:</strong> {order.userId.fullName}</p>
                   <p>
-                    {order.userId?.houseFlatNo},{" "}
-                    {order.userId?.areaStreet}
+                    {order.userId.houseFlatNo},{" "}
+                    {order.userId.areaStreet}
                   </p>
                   <p>
                     {order.userId?.city} - {order.userId?.pincode}

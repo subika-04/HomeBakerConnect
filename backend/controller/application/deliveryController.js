@@ -74,20 +74,19 @@ exports.confirmDelivery = async (req, res) => {
 // =====================================
 // GET DELIVERY PARTNER ORDERS
 // =====================================
-const Order = require("../models/Order");
 
-// GET assigned orders for delivery partner
+
 exports.getPartnerOrders = async (req, res) => {
   try {
     const orders = await Order.find({
       deliveryPartnerId: req.user.id,
       status: { $ne: "Delivered" },
     })
-      .populate(
-        "userId",
-        "fullName phoneNo houseFlatNo areaStreet city pincode"
-      )
+      .populate("userId", "fullName phoneNo houseFlatNo areaStreet city pincode")
       .sort({ createdAt: -1 });
+
+    // Add this for debugging
+    console.log("Fetched orders:", JSON.stringify(orders, null, 2));  // Check if userId is populated
 
     res.status(200).json({ orders });
   } catch (error) {
