@@ -35,7 +35,7 @@ const DeliveryDashboard = () => {
 
   const confirmDelivery = async (orderId) => {
     try {
-      await axios.put(
+      const res=await axios.put(
         "https://homebakerconnect.onrender.com/delivery/confirmDelivery",
         {
           orderId,
@@ -46,7 +46,7 @@ const DeliveryDashboard = () => {
         }
       );
 
-      alert("Order Delivered ✅");
+      alert(res.data.message+"✅");
       fetchOrders();
     } catch (error) {
       alert(error.response?.data?.message || "Error confirming delivery");

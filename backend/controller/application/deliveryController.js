@@ -67,7 +67,7 @@ exports.confirmDelivery = async (req, res) => {
 
     await order.save()
 
-    res.json({ message: "Order Delivered Successfully" })
+    res.json({ message: "Order Delivered Successful" })
 
   } catch (error) {
     res.status(500).json({ message: error.message })
