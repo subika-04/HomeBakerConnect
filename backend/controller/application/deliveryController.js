@@ -50,9 +50,7 @@ exports.outForDelivery = async (req, res) => {
 // VERIFY DELIVERY CODE
 // =====================================
 exports.confirmDelivery = async (req, res) => {
-
   try {
-
     const { orderId, deliveryCode } = req.body
 
     const order = await Order.findById(orderId)
@@ -63,7 +61,13 @@ exports.confirmDelivery = async (req, res) => {
     if (order.deliveryCode !== deliveryCode)
       return res.status(400).json({ message: "Invalid Delivery Code" })
 
-    res.json({ message: "Code Verified" })
+    // ✅ UPDATE STATUS
+    order.status = "Delivered"
+    order.deliveredAt = new Date()
+
+    await order.save()
+
+    res.json({ message: "Order Delivered Successfully" })
 
   } catch (error) {
     res.status(500).json({ message: error.message })
