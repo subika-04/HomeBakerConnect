@@ -66,6 +66,10 @@ exports.confirmDelivery = async (req, res) => {
     order.deliveredAt = new Date()
 
     await order.save()
+    await DeliveryPerson.findByIdAndUpdate(order.deliveryPartnerId, {
+  isAvailable: true,
+  currentOrder: null
+})
 
     res.json({ message: "Order Delivered Successful" })
 
