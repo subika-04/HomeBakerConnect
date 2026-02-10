@@ -39,7 +39,7 @@ const handleSubmit=async(e)=>{
     catch(error)
     {
       console.log(error.response);
-        alert(error.response.data)
+      alert(error.response.data)
     }
 }
   return (
