@@ -26,7 +26,7 @@
 .delivery-register-form {
   background: #ffffff;
   width: 100%;
-  max-width: 620px;
+  max-width: 550px;
   padding: 35px 40px;
   border-radius: 16px;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
@@ -39,15 +39,16 @@
   text-align: center;
   margin-bottom: 25px;
   color: #333;
-  font-size: 22px;
+  font-size: 15px;
 }
 
 .delivery-register-form h4 {
-  margin: 30px 0 12px;
+  margin: 10px 0 12px;
   color: #666;
-  font-size: 16px;
+  font-size: 13px;
   border-bottom: 2px solid #ffd1c4;
-  padding-bottom: 6px;
+  padding-bottom: 10px;
+  margin-bottom: 25px;
 }
 
 /* =========================
@@ -67,8 +68,8 @@
    LABELS
 ========================= */
 .delivery-register-form label {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 11px;
+  font-weight: 400;
   color: #555;
   display: block;
   margin-bottom: 6px;
@@ -79,7 +80,7 @@
 ========================= */
 .delivery-register-form input {
   width: 100%;
-  padding: 11px 12px;
+  padding: 5px 6px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 14px;

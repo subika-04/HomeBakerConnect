@@ -1,0 +1,61 @@
+.navbar {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+
+  background: transparent;
+
+  position: absolute; 
+}
+
+
+/* Logo */
+.navbar-logo {
+  height: 36px;
+  cursor: pointer;
+}
+
+/* Three dots */
+.dots {
+  font-size: 22px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Dropdown should still be visible */
+.dropdown {
+  position: absolute;
+  right: 20px;  /* keep this */
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    background: white;
+}
+
+/* Dropdown button */
+.dropdown button {
+  padding: 5px 20px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  background: white;
+  color:black;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.dropdown button:hover {
+  background: #eeeeee;
+}
+.navbar-left{
+    display: flex;
+    width: 60px;
+    justify-content: space-around;
+}
+.navbar-left span{
+    padding-top:10px;
+    font-size: 13px;
+    font-weight: 600;
+}

@@ -1,17 +1,17 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "../css/Home.css";
+import axios from "axios"
+import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import "../css/Home.css"
 import logo from "../../assets/logo2.png";
 
 const Home = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([])
   const [cart, setCart] = useState(() => {
-    return JSON.parse(localStorage.getItem("cart")) || [];
-  });
-  const [searchTerm, setSearchTerm] = useState("");
+    return JSON.parse(localStorage.getItem("cart")) || []
+  })
+  const [searchTerm, setSearchTerm] = useState("")
 
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token")
 
   useEffect(() => {
     axios
@@ -22,33 +22,29 @@ const Home = () => {
         }
       )
       .then((res) => setData(res.data))
-      .catch((err) => console.log(err.message));
-  }, []);
+      .catch((err) => console.log(err.message))
+  }, [])
 
   const getQuantity = (productId) => {
-    const item = cart.find((c) => c._id === productId);
-    return item ? item.quantity : 0;
-  };
+    const item = cart.find((c) => c._id === productId)
+    return item ? item.quantity : 0
+  }
 
   const addToCart = (product) => {
     setCart((prev) => {
-      const existing = prev.find((p) => p._id === product._id);
-      let updatedCart;
+      const existing = prev.find((p) => p._id === product._id)
+      const updatedCart = existing
+        ? prev.map((p) =>
+            p._id === product._id
+              ? { ...p, quantity: p.quantity + 1 }
+              : p
+          )
+        : [...prev, { ...product, quantity: 1 }]
 
-      if (existing) {
-        updatedCart = prev.map((p) =>
-          p._id === product._id
-            ? { ...p, quantity: p.quantity + 1 }
-            : p
-        );
-      } else {
-        updatedCart = [...prev, { ...product, quantity: 1 }];
-      }
-
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-      return updatedCart;
-    });
-  };
+      localStorage.setItem("cart", JSON.stringify(updatedCart))
+      return updatedCart
+    })
+  }
 
   const decreaseQuantity = (productId) => {
     setCart((prev) => {
@@ -56,22 +52,22 @@ const Home = () => {
         .map((p) =>
           p._id === productId ? { ...p, quantity: p.quantity - 1 } : p
         )
-        .filter((p) => p.quantity > 0);
+        .filter((p) => p.quantity > 0)
 
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-      return updatedCart;
-    });
-  };
+      localStorage.setItem("cart", JSON.stringify(updatedCart))
+      return updatedCart
+    })
+  }
 
   const renderQuantityComponent = (product) => {
-    const qty = getQuantity(product._id);
+    const qty = getQuantity(product._id)
 
     if (qty === 0) {
       return (
         <button className="addBtn" onClick={() => addToCart(product)}>
           Add to Cart
         </button>
-      );
+      )
     }
 
     return (
@@ -80,18 +76,16 @@ const Home = () => {
         <span>{qty}</span>
         <button onClick={() => addToCart(product)}>+</button>
       </div>
-    );
-  };
+    )
+  }
 
   return (
     <div>
-      {/* HEADER */}
-      <div className="homeHeader">
-        <div className="logoSection">
-          <img src={logo} alt="BakeCloud Logo" />
-          <h3>BakeCloud</h3>
-        </div>
-
+      {/* HEADER */} <div className="homeHeader"> 
+        <div className="logoSection"> 
+          <img src={logo} alt="BakeCloud Logo" /> 
+          <h3>BakeCloud</h3> 
+          </div>
         <div className="searchSection">
           <input
             type="text"
@@ -128,8 +122,6 @@ const Home = () => {
                   <img src={product.productImage} alt="" />
                   <h4>{product.productName}</h4>
                   <p>₹{product.price}</p>
-
-                  {/* SINGLE quantity UI */}
                   {renderQuantityComponent(product)}
                 </div>
               ))}
@@ -137,7 +129,7 @@ const Home = () => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

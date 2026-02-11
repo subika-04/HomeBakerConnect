@@ -1,3 +1,8 @@
+/* ===== GLOBAL SAFE FIX ===== */
+* {
+  box-sizing: border-box;
+}
+
 /* ===== PAGE BASE ===== */
 .baker-orders-page {
   padding: 30px;
@@ -6,9 +11,10 @@
 }
 
 .baker-orders-page h2 {
-  margin-bottom: 20px;
+  margin: 20px 0;
   color: #d35400;
   text-align: center;
+  font-size: 18px;
 }
 
 /* ===== NO ORDERS ===== */
@@ -19,7 +25,7 @@
 }
 
 .no-orders h3 {
-  font-size: 22px;
+  font-size: 15px;
   margin-bottom: 8px;
 }
 
@@ -29,11 +35,13 @@
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 25px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 
   display: grid;
-  grid-template-columns: 1fr 220px;
+  grid-template-columns: 2fr 1fr; /* ✅ Flexible instead of fixed 220px */
   gap: 20px;
+
+  overflow: hidden; /* extra safety */
 }
 
 /* ===== ITEMS LIST ===== */
@@ -72,30 +80,13 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.order-summary p {
+  font-size: 13px;
   font-weight: 500;
-}
-
-.delivery-code {
-  font-size: 14px;
-  color: #555;
-}
-
-/* ===== STATUS BADGE ===== */
-.delivered-btn {
-  width: fit-content;
-  margin-top: 6px;
-  background: #ccc;
-  color: white;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 6px;
-  font-weight: 500;
-  cursor: not-allowed;
-}
-
-.delivered-btn.active {
-  background: #28a745;
-  box-shadow: 0 0 8px rgba(40, 167, 69, 0.6);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* ===== STATUS ACTIONS ===== */
@@ -122,26 +113,46 @@
   color: white;
 }
 
-/* ===== MANUAL DELIVERED ===== */
-.manual-delivered {
-  background: #2ecc71;
+/* ===== DELIVERED BUTTON ===== */
+.delivered-btn {
+  background: #ccc;
   color: white;
+  cursor: not-allowed;
 }
 
-.manual-delivered:hover {
-  background: #27ae60;
+.delivered-btn.active {
+  background: #28a745;
+  font-size: 13px;
+  box-shadow: 0 0 8px rgba(40, 167, 69, 0.6);
+}
+
+/* ===== DELIVERY CODE + TRACK SECTION ===== */
+.deliveryCodeBaker {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;      /* ✅ prevents overflow */
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.delivery-code {
+  font-size: 14px;
+  color: #555;
+  word-break: break-word;
 }
 
 /* ===== TRACK BUTTON ===== */
 .track-btn {
-  grid-column: 1 / -1;
-  margin-top: 10px;
   background: #007bff;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 10px 14px;
   border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s;
+  min-width: 140px;
 }
 
 .track-btn:hover {
@@ -155,7 +166,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -195,7 +206,7 @@
   }
 
   .baker-order-card {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stack vertically */
   }
 
   .order-item img {
@@ -205,6 +216,11 @@
 
   .status-actions {
     justify-content: center;
+  }
+
+  .deliveryCodeBaker {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .track-btn {

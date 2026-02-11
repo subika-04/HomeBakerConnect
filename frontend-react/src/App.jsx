@@ -13,24 +13,27 @@ import DeliveryRegister from './pages/auth/DeliveryRegister'
 import Welcome from './pages/auth/Welcome'
 import "leaflet/dist/leaflet.css";
 import UserOrder from './pages/product/UserOrder'
+import Layout from './pages/auth/Layout'
 
 
 const App = () => {
   return (
     <div>
       <Routes>
+        <Route element={<Layout />}>
         <Route path="/" element={<Welcome/>}/>
         <Route path="/userRegister" element={<UserRegister/>}/>
         <Route path="/bakerRegister" element={<BakerRegister/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/addProduct" element={<ProductForm/>}/>
         <Route path="/baker/dashboard" element={<BakerDashBoard/>}/>
-        <Route path="/user/home" element={<Home/>}/>
         <Route path="/cart" element={<AddToCart/>}/>
         <Route path="/userOrder" element={<UserOrder/>}/>
         <Route path="/bakerOrder" element={<BakerOrder/>}/>
         <Route path="/deliveryRegister" element={<DeliveryRegister/>}/>
         <Route path="//DeliveryDashboard" element={<DeliveryDashboard/>}/>
+        </Route>
+        <Route path="/user/home" element={<Home/>}/>
       </Routes>
     </div>
   )

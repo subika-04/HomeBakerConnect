@@ -108,7 +108,7 @@ const BakerOrder = () => {
         </div>
       ) : (
         orders.map((order) => (
-          <div className="baker-order-card" key={order._id}>
+        <div className="baker-order-card" key={order._id}>
             {/* Items */}
             <div className="order-items">
               {order.items.map((item) => (
@@ -123,28 +123,13 @@ const BakerOrder = () => {
             </div>
 
             {/* Order Summary */}
-            <div className="order-summary">
+          <div className="order-summary">
               <p>
                 <strong>Status:</strong> {order.status}
               </p>
               <p>
                 <strong>Total:</strong> ₹{order.totalAmount}
               </p>
-
-              {order.deliveryCode && (
-                <p className="delivery-code">
-                  Delivery Code : {order.deliveryCode}
-                </p>
-              )}
-
-              <button
-                className={`delivered-btn ${
-                  order.status === "Delivered" ? "active" : ""
-                }`}
-                disabled
-              >
-                Delivered
-              </button>
             </div>
 
             {/* Status Buttons */}
@@ -173,20 +158,27 @@ const BakerOrder = () => {
               </button>
 
               <button
-                className="manual-delivered"
-                disabled={order.status !== "Out for Delivery"}
-                onClick={() => updateStatus(order._id, "Delivered")}
+                className={`delivered-btn ${
+                  order.status === "Delivered" ? "active" : ""
+                }`}
+                disabled
               >
                 Delivered
               </button>
             </div>
-
+            <div className="deliveryCodeBaker">
+            {order.deliveryCode && (
+                <p className="delivery-code">
+                  Delivery Code : {order.deliveryCode}
+                </p>
+              )}
             {/* New: Track Order Button */}
             {order.status === "Out for Delivery" && (
               <button className="track-btn" onClick={() => trackOrder(order._id)}>
                 Track Order
               </button>
             )}
+            </div>
           </div>
         ))
       )}

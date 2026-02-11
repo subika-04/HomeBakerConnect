@@ -91,15 +91,26 @@ const UserOrder = () => {
               <p className="status">Status: {order.status}</p>
               <p className="total">Total: ₹{order.totalAmount}</p>
             </div>
+<div class="deliveryCode">
+           {order.deliveryCode && (
+  <>
+    <p className="delivery-code">
+      Delivery Code : <strong>{order.deliveryCode}</strong>
+      <br />
+      Please share this delivery code with the delivery partner and pay ₹{order.totalAmount} at the time of delivery.
+    </p>
 
-            {/* Delivery Code */}
-            {order.deliveryCode && (
-              <p className="delivery-code">
-                Delivery Code : <strong>{order.deliveryCode}</strong>
-                <br />
-                Please share this delivery code with the delivery partner and pay ₹{order.totalAmount} at the time of delivery.
-              </p>
-            )}
+    {order.status === "Out for Delivery" && (
+      <button
+        className="track-btn"
+        onClick={() => trackOrder(order._id)}
+      >
+        Track Order
+      </button>
+    )}
+  </>
+)}
+</div>
 
             {/* Bakery Details */}
             {order.bakerId && (
@@ -134,12 +145,7 @@ const UserOrder = () => {
               </div>
             )}
 
-            {/* New: Track Order Button */}
-            {order.status === "Out for Delivery" && (
-              <button className="track-btn" onClick={() => trackOrder(order._id)}>
-                Track Order
-              </button>
-            )}
+            
           </div>
         ))
       )}

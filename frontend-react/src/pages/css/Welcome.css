@@ -14,8 +14,8 @@
 /* ===== FLOATING BLOBS ===== */
 .blob {
   position: absolute;
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
   background: rgba(255, 182, 193, 0.4);
   border-radius: 50%;
   filter: blur(60px);
@@ -48,7 +48,7 @@
 /* ===== CARD ===== */
 .welcome-card {
   background: rgba(255, 255, 255, 0.85);
-  padding: 60px 70px;
+  padding: 40px 30px;
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   text-align: center;
@@ -69,7 +69,7 @@
 
 /* ===== TITLE ===== */
 .welcome-title {
-  font-size: 42px;
+  font-size: 35px;
   margin-bottom: 10px;
   color: #333;
 }
@@ -80,19 +80,19 @@
 
 /* ===== SUBTITLE ===== */
 .welcome-subtitle {
-  font-size: 18px;
+  font-size: 14px;
   color: #666;
   margin-bottom: 40px;
 }
 
 /* ===== BUTTON ===== */
 .start-btn {
-  padding: 14px 40px;
+  padding: 12px 30px;
   border: none;
   border-radius: 30px;
   background: linear-gradient(135deg, #ff6b81, #ff4757);
   color: #ffffff;
-  font-size: 18px;
+  font-size: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 10px 20px rgba(255, 71, 87, 0.4);

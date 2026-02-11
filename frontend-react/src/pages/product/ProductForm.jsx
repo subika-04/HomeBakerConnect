@@ -94,8 +94,9 @@ const handleSubmit = async (e) => {
   name="mode"
   value={form.mode}
   onChange={handleChange}
+  className='select'
 >
-  <option value="">Select</option>
+  <option value="" >Select</option>
   <option value="Veg">Veg</option>
   <option value="Non-veg">Non-veg</option>
   <option value="Eggless">Eggless</option>
@@ -113,6 +114,7 @@ const handleSubmit = async (e) => {
   name="customization"
   value={form.customization}
   onChange={handleChange}
+  className='select'
 >
   <option value="">Select</option>
   <option value="Yes">Yes</option>

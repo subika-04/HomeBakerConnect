@@ -80,7 +80,7 @@ else if (res.data.role === 'Delivery') navigate("/DeliveryDashboard")
       {showModal && (
         <div className="login-modal-overlay">
           <div className="login-modal-box">
-            <h3>Do you want to sell products in our app?</h3>
+            <h4>Do you want to sell products in our app?</h4>
 
             <div className="login-modal-buttons">
               <button className="baker-btn" onClick={handleBaker}>

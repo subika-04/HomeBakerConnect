@@ -47,7 +47,7 @@ const BakerRegister = () => {
     <div className="baker-register-page">
       <form className="baker-register-form" onSubmit={handleSubmit}>
         
-        <h4>Personal Information</h4>
+        <h3>Personal Information</h3>
         <div className="form-grid">
           <div>
             <label>Baker Name</label>
@@ -65,7 +65,7 @@ const BakerRegister = () => {
           </div>
         </div>
 
-        <h4>Business Information</h4>
+        <h3>Business Information</h3>
         <div className="form-grid">
           <div>
             <label>Bakery Brand</label>
@@ -87,7 +87,7 @@ const BakerRegister = () => {
           </div>
         </div>
 
-        <h4>Address</h4>
+        <h3>Address</h3>
         <div className="form-grid">
           <div className="full-width">
             <label>Kitchen Address</label>
@@ -105,7 +105,7 @@ const BakerRegister = () => {
           </div>
         </div>
 
-        <h4>Food Details</h4>
+        <h3>Food Details</h3>
         <div className="form-grid">
           <div>
             <label>Specialities</label>
@@ -142,7 +142,7 @@ const BakerRegister = () => {
           </div>
         </div>
 
-        <h4>Login Credentials</h4>
+        <h3>Login Credentials</h3>
         <div className="form-grid">
           <div>
             <label>Username</label>

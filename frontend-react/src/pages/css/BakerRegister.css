@@ -28,7 +28,7 @@
 ========================= */
 .baker-register-form {
   width: 100%;
-  max-width: 950px;
+  max-width: 650px;
   background: rgba(255, 255, 255, 0.96);
   padding: 35px 45px;
   border-radius: 18px;
@@ -38,9 +38,9 @@
 /* =========================
    SECTION HEADINGS
 ========================= */
-.baker-register-form h4 {
-  margin: 30px 0 15px;
-  font-size: 18px;
+.baker-register-form h3 {
+  margin: 10px 0 15px;
+  font-size: 15px;
   color: #d35400;
   border-bottom: 2px solid #f3c6a5;
   padding-bottom: 6px;
@@ -65,7 +65,7 @@
 label {
   display: block;
   margin-bottom: 6px;
-  font-weight: 500;
+  font-weight: 400;
   color: #444;
 }
 
@@ -75,7 +75,7 @@ label {
 input,
 select {
   width: 100%;
-  padding: 11px 12px;
+  padding: 6px 8px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 14px;
@@ -92,7 +92,7 @@ select:focus {
 /* =========================
    SUBMIT BUTTON
 ========================= */
-button {
+.baker-register-form button {
   width: 100%;
   margin-top: 35px;
   padding: 12px;
@@ -100,13 +100,13 @@ button {
   color: white;
   border: none;
   border-radius: 14px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
-button:hover {
+.baker-register-form button:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 26px rgba(211, 84, 0, 0.35);
 }
@@ -156,6 +156,6 @@ button:hover {
   }
 
   button {
-    font-size: 15px;
+    font-size: 13px;
   }
 }

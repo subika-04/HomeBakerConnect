@@ -12,7 +12,7 @@
 
 /* Form container */
 .userRegister form {
-  width: 700px;
+  width: 600px;
   padding: 30px 35px;
   background: #ffffff;
   border: 1px solid #dcdcdc;
@@ -27,7 +27,7 @@
 /* Section headings */
 .userRegister h4 {
   grid-column: 1 / -1;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 600;
   color: #333;
   border-bottom: 1px solid #ac5221;
@@ -37,14 +37,15 @@
 
 /* Labels */
 .userRegister label {
-  font-size: 14px;
+  font-size: 11px;
   color: #444;
   align-self: center;
+  font-weight: 400;
 }
 
 /* Inputs */
 .userRegister input {
-  height: 36px;
+  height: 30px;
   padding: 6px 10px;
   font-size: 14px;
   border: 1px solid #cfcfcf;
@@ -59,14 +60,15 @@
 /* Submit button */
 .userRegister button {
   grid-column: 1 / -1;
-  margin-top: 20px;
-  height: 40px;
+  margin-top: 15px;
+  height: 35px;
   background: #ff7a18;
   color: #ffffff;
   border: none;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .userRegister button:hover {

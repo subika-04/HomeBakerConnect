@@ -136,7 +136,6 @@ exports.login = async (req, res) => {
   const isMatching = await bcrypt.compare(password, existingUser.password);
 
   if (!isMatching) {
-    
     return res.status(400).send("Incorrect Password");
   }
 
@@ -156,7 +155,6 @@ exports.login = async (req, res) => {
 
 exports.deliveryRegister = async (req,res)=>{
   try{
-
     const {
       fullName,
       email,

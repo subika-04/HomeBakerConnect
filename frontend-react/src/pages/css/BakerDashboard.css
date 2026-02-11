@@ -7,7 +7,7 @@
 
 /* ===== BAKERY TITLE ===== */
 .bakery-title {
-  font-size: 34px;
+  font-size: 18px;
   font-weight: 700;
   color: #d35400;
   text-align: center;
@@ -16,7 +16,7 @@
 
 /* ===== SECTION TITLE ===== */
 .section-title {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
   margin-bottom: 25px;
   text-align: center;
@@ -26,9 +26,9 @@
 /* ===== PRODUCTS GRID ===== */
 .bakerProducts {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 22px;
-  margin-bottom: 35px;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 18px;
+  padding: 0 20px 20px;
 }
 
 /* ===== PRODUCT CARD ===== */
@@ -49,7 +49,7 @@
 /* ===== PRODUCT IMAGE ===== */
 .bakerProduct img {
   width: 100%;
-  height: 170px;
+  height: 140px;
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 12px;
@@ -57,7 +57,7 @@
 
 /* ===== PRODUCT NAME ===== */
 .bakerProduct h5 {
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
   margin: 6px 0;
   color: #333;
@@ -65,7 +65,7 @@
 
 /* ===== PRODUCT PRICE ===== */
 .bakerProduct p {
-  font-size: 15px;
+  font-size: 11px;
   font-weight: 700;
   color: #e17055;
   margin: 0;
@@ -82,10 +82,10 @@
 /* ===== BUTTON BASE ===== */
 .dash-btn {
   text-decoration: none;
-  padding: 12px 22px;
+  padding: 6px 20px;
   border-radius: 12px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 12px;
   transition: all 0.25s ease;
   text-align: center;
 }
