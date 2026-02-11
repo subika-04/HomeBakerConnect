@@ -182,12 +182,8 @@ const BakerOrder = () => {
                   Delivery Code : {order.deliveryCode}
                 </p>
               )}
-            {/* New: Track Order Button */}
-            {order.status === "Out for Delivery" && (
-              <button className="track-btn" onClick={() => trackOrder(order._id)}>
-                Track Order
-              </button>
-            )}
+        
+            
             </div>
           </div>
         ))
