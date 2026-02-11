@@ -99,31 +99,31 @@ exports.placeOrder = async (req, res) => {
 };
 
 exports.getUserOrder = async (req, res) => {
-
   try {
-
     const userId = req.user.id;
 
-    const orders = await Order.find({ userId: userId }).sort({ createdAt: -1 })
-
+    const orders = await Order.find({ userId: userId })
+      .sort({ createdAt: -1 })
       .populate(
         "bakerId",
         "name bakeryBrandName email phoneNo kitchenAddress"
       )
-
       .populate(
         "deliveryPartnerId",
-        "fullName phoneNo city"
-      );   // ⭐ Added
+        "fullName phoneNo city location"
+      )
+      .populate(
+        "userId",
+        "fullName phoneNo location"   // 🔥 ADD THIS
+      );
 
     res.status(200).json({ orders });
 
-  }
-  catch (error) {
+  } catch (error) {
     res.status(500).json({ message: error.message });
   }
-
-}
+};
+ 
 
 
 exports.getBakerOrder=async(req,res)=>{

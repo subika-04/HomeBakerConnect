@@ -185,3 +185,44 @@
 display: flex;
 justify-content: space-around;
 }
+/* Hide routing instruction box completely */
+/* Make routing box small */
+.leaflet-routing-container {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  width: 220px !important;
+  max-height: 140px !important;
+
+  background: white !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+
+  overflow-y: auto !important;
+  font-size: 11px !important;
+  z-index: 1000 !important;
+  padding: 5px;
+}
+
+/* Remove header completely */
+.leaflet-routing-container h2 {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Remove top spacing */
+.leaflet-routing-container {
+  padding-top: 0 !important;
+}
+
+/* Remove margin from alt container */
+.leaflet-routing-alt {
+  margin-top: 0 !important;
+  padding: 6px !important;
+}
+
+/* Remove any extra top margin inside */
+.leaflet-routing-container * {
+  margin-top: 0 !important;
+}

@@ -10,6 +10,8 @@ L.Icon.Default.mergeOptions({
   iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
+import "leaflet-routing-machine";
+
 
 const BakerOrder = () => {
   const [orders, setOrders] = useState([]);
@@ -72,6 +74,7 @@ const BakerOrder = () => {
 
   // New: Track order function
   const trackOrder = async (orderId) => {
+    console.log("orderId : "+orderId)
     setTrackingOrder(orderId);
     fetchLocation(orderId);
     const locationInterval = setInterval(() => fetchLocation(orderId), 5000); // Update every 5s
@@ -80,16 +83,23 @@ const BakerOrder = () => {
 
   // New: Fetch location
   const fetchLocation = async (orderId) => {
-    try {
-      const res = await axios.get(`https://homebakerconnect.onrender.com/delivery/getLocation/${orderId}`, {
+  console.log("Fetching location for:", orderId); // add this
+
+  try {
+    const res = await axios.get(
+      `https://homebakerconnect.onrender.com/delivery/getLocation/${orderId}`,
+      {
         headers: { Authorization: `Bearer ${token}` },
-      });
-      setPartnerLocation(res.data.location);
-    } catch (error) {
-      console.log("Location fetch error:", error.message);
-      setPartnerLocation(null);
-    }
-  };
+      }
+    );
+
+    setPartnerLocation(res.data.location);
+  } catch (error) {
+    console.log("Location fetch error:", error.response?.data);
+    setPartnerLocation(null);
+  }
+};
+
 
   // New: Close tracking modal
   const closeTracking = () => {

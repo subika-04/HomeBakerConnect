@@ -172,7 +172,7 @@ exports.getLocation = async (req, res) => {
 
     const order = await Order.findById(orderId).populate("deliveryPartnerId");
     if (!order) return res.status(404).json({ message: "Order not found" });
-
+    console.log(order.status)
     // Allow only user or baker associated with the order
     if (order.userId.toString() !== userId && order.bakerId.toString() !== userId) {
       return res.status(403).json({ message: "Unauthorized" });
