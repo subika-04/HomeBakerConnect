@@ -81,6 +81,24 @@ const addToCart = (product) => {
   setCart(updatedCart);
 };
 
+const decreaseQuantity = (productId) => {
+  const updatedCart = cart
+    .map((item) =>
+      item._id === productId
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    )
+    .filter((item) => item.quantity > 0);
+
+  localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+  // If cart becomes empty → remove bakery restriction
+  if (updatedCart.length === 0) {
+    localStorage.removeItem("currentBakerId");
+  }
+
+  setCart(updatedCart);
+};
 
   const renderQuantityComponent = (product) => {
     const qty = getQuantity(product._id)

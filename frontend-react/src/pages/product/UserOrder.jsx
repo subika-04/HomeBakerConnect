@@ -120,7 +120,7 @@ const UserOrder = () => {
     };
 
     fetchOrders();
-    const interval = setInterval(fetchOrders, 5000);
+    const interval = setInterval(fetchOrders, 500);
     return () => clearInterval(interval);
   }, [token]);
 
@@ -300,7 +300,7 @@ const UserOrder = () => {
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
                 {/* Partner */}
-                // ==========================
+ // ==========================
 // CUSTOM ICONS
 // ==========================
 
