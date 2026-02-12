@@ -41,7 +41,8 @@ exports.createCheckoutSession = async (req, res) => {
       cancel_url: `https://homebakerconnect-frontend.onrender.com/userOrder`,
     });
 
-    res.json({ id: session.id });
+    res.json({ url: session.url });
+
 
   } catch (error) {
     res.status(500).json({ error: error.message });

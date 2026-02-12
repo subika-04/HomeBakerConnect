@@ -51,41 +51,38 @@ const AddToCart = () => {
   // =============================
   // PLACE ORDER + STRIPE PAYMENT
   // =============================
-  const placeOrder = async () => {
+const placeOrder = async () => {
 
-    if (cartItems.length === 0) return alert("Cart is empty");
+  if (cartItems.length === 0) return alert("Cart is empty");
 
-    try {
+  try {
 
-      // 1️⃣ Create Order in DB (Payment Pending)
-      const orderRes = await axios.post(
-        "https://homebakerconnect.onrender.com/product/placeOrder",
-        { cart: cartItems },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+    // 1️⃣ Create Order
+    const orderRes = await axios.post(
+      "https://homebakerconnect.onrender.com/product/placeOrder",
+      { cart: cartItems },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
 
-      const orderId = orderRes.data.orderId;
+    const orderId = orderRes.data.orderId;
 
-      // 2️⃣ Create Stripe Checkout Session
-      const sessionRes = await axios.post(
-        "https://homebakerconnect.onrender.com/payment/createCheckoutSession",
-        { orderId }
-      );
+    // 2️⃣ Create Stripe Checkout Session
+    const sessionRes = await axios.post(
+      "https://homebakerconnect.onrender.com/payment/createCheckoutSession",
+      { orderId }
+    );
 
-      const stripe = await stripePromise;
+    // 3️⃣ Redirect to Stripe Checkout
+    window.location.href = sessionRes.data.url;
 
-      // 3️⃣ Redirect to Stripe
-      await stripe.redirectToCheckout({
-        sessionId: sessionRes.data.id,
-      });
+  } catch (error) {
+    console.log(error);
+    alert("Payment Failed ❌");
+  }
+};
 
-    } catch (error) {
-      console.log(error);
-      alert("Payment Failed ❌");
-    }
-  };
 
   const clearCart = () => {
     localStorage.setItem("cart", JSON.stringify([]));
