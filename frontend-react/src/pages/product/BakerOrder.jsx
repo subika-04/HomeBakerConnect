@@ -176,15 +176,7 @@ const BakerOrder = () => {
                 Delivered
               </button>
             </div>
-            <div className="deliveryCodeBaker">
-            {order.deliveryCode && (
-                <p className="delivery-code">
-                  Delivery Code : {order.deliveryCode}
-                </p>
-              )}
-        
             
-            </div>
           </div>
         ))
       )}
