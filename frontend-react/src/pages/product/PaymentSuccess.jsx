@@ -10,9 +10,10 @@ const PaymentSuccess = () => {
   useEffect(() => {
     const updatePayment = async () => {
       if (orderId) {
-        await axios.put(
-          `https://homebakerconnect.onrender.com/payment/update-payment/${orderId}`
-        );
+       await axios.put(
+  `https://homebakerconnect.onrender.com/payment/updatePaymentStatus/${orderId}`
+);
+
 
         setTimeout(() => {
           navigate("/userOrder");

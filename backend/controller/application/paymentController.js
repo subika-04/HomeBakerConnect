@@ -37,8 +37,8 @@ exports.createCheckoutSession = async (req, res) => {
         },
       ],
 
-      success_url: `https://homebakerconnect-frontend.onrender.com/payment-success?orderId=${order._id}`,
-      cancel_url: `https://homebakerconnect-frontend.onrender.com/userOrder`,
+      success_url: `https://home-baker-connect.vercel.app/payment-success?orderId=${order._id}`,
+      cancel_url: `https://home-baker-connect.vercel.app/userOrder`,
     });
 
     res.json({ url: session.url });
