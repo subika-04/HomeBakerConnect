@@ -14,6 +14,7 @@ import Welcome from './pages/auth/Welcome'
 import "leaflet/dist/leaflet.css";
 import UserOrder from './pages/product/UserOrder'
 import Layout from './pages/auth/Layout'
+import PaymentSuccess from './pages/product/PaymentSuccess'
 
 
 const App = () => {
@@ -32,6 +33,8 @@ const App = () => {
         <Route path="/bakerOrder" element={<BakerOrder/>}/>
         <Route path="/deliveryRegister" element={<DeliveryRegister/>}/>
         <Route path="//DeliveryDashboard" element={<DeliveryDashboard/>}/>
+        <Route path="/payment-success" element={<PaymentSuccess />} />
+
         </Route>
         <Route path="/user/home" element={<Home/>}/>
       </Routes>

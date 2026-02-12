@@ -61,6 +61,12 @@ const orderSchema = new mongoose.Schema(
       ref: "DeliveryPerson",
       default: null
     },
+    paymentStatus: {
+  type: String,
+  enum: ["Pending", "Paid"],
+  default: "Pending",
+}
+
 
   },
   {

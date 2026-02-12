@@ -21,6 +21,8 @@ mongoose.connect(process.env.MONGO_URI)
 app.use("/auth",require("./routes/authRoutes"))
 app.use("/product",require("./routes/productRoutes"))
 app.use("/delivery", require("./routes/deliveryRoutes"))
+const paymentRoutes = require("./routes/paymentRoutes");
+app.use("/payment", paymentRoutes);
 app.get("/demo",(req,res)=>{
 res.send("hi from express")
 })

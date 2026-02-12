@@ -90,7 +90,7 @@ exports.placeOrder = async (req, res) => {
   ),
 });
 
-        res.status(201).json({ message: "Order Placed Successfully", order: placedOrder });
+        res.status(201).json({ message: "Order Placed Successfully", order: placedOrder,orderId:placedOrder._id });
     } catch (error) {
   console.error("Place order error:", error);
   res.status(500).json({ message: error.message });
