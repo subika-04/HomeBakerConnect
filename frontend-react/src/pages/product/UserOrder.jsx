@@ -104,6 +104,7 @@ const UserOrder = () => {
   // =============================
   // FETCH USER ORDERS
   // =============================
+  
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -112,6 +113,7 @@ const UserOrder = () => {
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setOrders(res.data.orders);
+        console.log(res.data.orders)
       } catch (error) {
         console.log(error.message);
       }
@@ -214,6 +216,7 @@ const UserOrder = () => {
             <div className="order-footer">
               <p className="status">Status: {order.status}</p>
               <p className="total">Total: ₹{order.totalAmount}</p>
+              <p className="total">Payment Status : Paid</p>
             </div>
 
             {order.deliveryCode && (
@@ -232,7 +235,7 @@ const UserOrder = () => {
                 )}
               </div>
             )}
-
+            
             {order.deliveryPartnerId && (
               <div className="delivery-details">
                 <h4>Delivery Partner</h4>
@@ -246,10 +249,36 @@ const UserOrder = () => {
                 </a>
               </div>
             )}
+            {order.bakerId && (
+  <div className="delivery-details">
+    <h4>Bakery Details</h4>
+
+    <p>
+      <strong>Bakery Name:</strong>{" "}
+      {order.bakerId.bakeryBrandName || order.bakerId.name}
+    </p>
+
+    <p>
+      <strong>Address:</strong> {order.bakerId.kitchenAddress}
+    </p>
+
+    <p>
+      <strong>Contact No:</strong> {order.bakerId.phoneNo}
+    </p>
+
+    <a
+      href={`tel:${order.bakerId.phoneNo}`}
+      className="callBtn"
+    >
+      Call Bakery
+    </a>
+  </div>
+)}
+
           </div>
         ))
       )}
-
+        
       {/* =============================
            TRACKING MODAL
       ============================== */}
