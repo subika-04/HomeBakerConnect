@@ -30,34 +30,57 @@ const Home = () => {
     return item ? item.quantity : 0
   }
 
-  const addToCart = (product) => {
-    setCart((prev) => {
-      const existing = prev.find((p) => p._id === product._id)
-      const updatedCart = existing
-        ? prev.map((p) =>
-            p._id === product._id
-              ? { ...p, quantity: p.quantity + 1 }
-              : p
-          )
-        : [...prev, { ...product, quantity: 1 }]
+   const clearCart = () => {
+  localStorage.setItem("cart", JSON.stringify([]));
+  localStorage.removeItem("currentBakerId");
+  setCart([]);   // ✅ correct state setter
+};
 
-      localStorage.setItem("cart", JSON.stringify(updatedCart))
-      return updatedCart
-    })
+const addToCart = (product) => {
+  const currentBakerId = localStorage.getItem("currentBakerId");
+
+  // 🔴 Different bakery
+  if (
+    cart.length > 0 &&
+    currentBakerId &&
+    currentBakerId !== product.bakerId
+  ) {
+    const confirmSwitch = window.confirm(
+      "Your cart contains items from another bakery. Do you want to clear the cart and continue?"
+    );
+
+    if (!confirmSwitch) return;
+
+    // ✅ Directly create new cart (no clearCart call)
+    const newCart = [{ ...product, quantity: 1 }];
+
+    localStorage.setItem("cart", JSON.stringify(newCart));
+    localStorage.setItem("currentBakerId", product.bakerId);
+    setCart(newCart);
+
+    return; // ⛔ stop further execution
   }
 
-  const decreaseQuantity = (productId) => {
-    setCart((prev) => {
-      const updatedCart = prev
-        .map((p) =>
-          p._id === productId ? { ...p, quantity: p.quantity - 1 } : p
-        )
-        .filter((p) => p.quantity > 0)
+  // 🟢 Same bakery or empty cart
+  const existing = cart.find((p) => p._id === product._id);
 
-      localStorage.setItem("cart", JSON.stringify(updatedCart))
-      return updatedCart
-    })
+  let updatedCart;
+
+  if (existing) {
+    updatedCart = cart.map((p) =>
+      p._id === product._id
+        ? { ...p, quantity: p.quantity + 1 }
+        : p
+    );
+  } else {
+    updatedCart = [...cart, { ...product, quantity: 1 }];
   }
+
+  localStorage.setItem("cart", JSON.stringify(updatedCart));
+  localStorage.setItem("currentBakerId", product.bakerId);
+  setCart(updatedCart);
+};
+
 
   const renderQuantityComponent = (product) => {
     const qty = getQuantity(product._id)
@@ -122,7 +145,8 @@ const Home = () => {
                   <img src={product.productImage} alt="" />
                   <h4>{product.productName}</h4>
                   <p>₹{product.price}</p>
-                  {renderQuantityComponent(product)}
+                  {renderQuantityComponent({ ...product, bakerId: item.baker._id })}
+
                 </div>
               ))}
           </div>
